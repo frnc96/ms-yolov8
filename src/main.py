@@ -1,9 +1,9 @@
 from ultralytics import YOLO
+from src.rgbt import merge
 from pathlib import Path
 
 
 # Load a model
-# model = YOLO("ms-yolov8n.yaml")  # build a new model from scratch
 model = YOLO(
     model=Path("ultralytics/cfg/models/v8/ms-yolov8.yaml"),
     # model=Path("checkpoints/yolov8n.pt"),
@@ -11,7 +11,15 @@ model = YOLO(
     verbose=True,
 )
 
+# Compose the WxHx4 Tensor from two images
+rgbt_tensor = merge(
+    rgb_image_path='ultralytics/cfg/datasets/niicu/val/rgb-images/flight3_frame12721.jpg',
+    t_image_path='ultralytics/cfg/datasets/niicu/val/t-images/flight3_frame12721.jpg',
+)
+
+# print(rgbt_tensor.shape)
+
 results = model.predict(
-    source=Path("runs/people.jpeg"),
+    source=rgbt_tensor,
     save=True,
 )

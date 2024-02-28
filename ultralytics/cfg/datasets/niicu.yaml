@@ -1,0 +1,12 @@
+# Paths to the dataset directories
+# Ensure these paths are accessible from your YOLOv8 environment
+path: ../datasets/niicu     # Base path to the dataset
+train: train/rgb-images     # Relative to 'path', directory containing training images
+val: val/rgb-images         # Relative to 'path', directory containing validation images
+
+# Dataset class information
+nc: 1              # Number of classes
+names: ['human']  # Class names
+
+# Optionally, you can include paths to test images, if you have them
+# test: test/images  # Uncomment and modify if you have a test set
