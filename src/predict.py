@@ -5,7 +5,7 @@ from pathlib import Path
 
 # Load a model
 model = YOLO(
-    model=Path("ultralytics/cfg/models/v8/ms-yolov8.yaml"),
+    model=Path("ultralytics/cfg/models/v8/ms-yolov8n.yaml"),
     # model=Path("checkpoints/yolov8n.pt"),
     task="detect",
     verbose=True,
@@ -17,9 +17,8 @@ rgbt_tensor = merge(
     t_image_path='ultralytics/cfg/datasets/niicu/val/t-images/flight3_frame12721.jpg',
 )
 
-# print(rgbt_tensor.shape)
-
 results = model.predict(
     source=rgbt_tensor,
+    # source='ultralytics/cfg/datasets/niicu/val/rgb-images/flight3_frame12721.jpg',
     save=True,
 )
