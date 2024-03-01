@@ -676,7 +676,7 @@ def save_one_box(xyxy, im, file=Path("im.jpg"), gain=1.02, pad=10, square=False,
         from ultralytics.utils.plotting import save_one_box
 
         xyxy = [50, 50, 150, 150]
-        im = cv2.imread('image.jpg')
+        im = cv2.imread('image.jpg', cv2.IMREAD_UNCHANGED)
         cropped_im = save_one_box(xyxy, im, file='cropped.jpg', square=True)
         ```
     """
@@ -740,7 +740,9 @@ def plot_images(
     mosaic = np.full((int(ns * h), int(ns * w), 3), 255, dtype=np.uint8)  # init
     for i in range(bs):
         x, y = int(w * (i // ns)), int(h * (i % ns))  # block origin
-        mosaic[y : y + h, x : x + w, :] = images[i].transpose(1, 2, 0)
+        (T, R, G, B) = cv2.split(images[i].transpose(1, 2, 0))
+        mosaic[y : y + h, x : x + w, :] = cv2.merge([R, G, B])
+
 
     # Resize (optional)
     scale = max_size / ns / max(h, w)
