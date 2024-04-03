@@ -15,7 +15,7 @@ args = parser.parse_args()
 # Config
 MODEL_YAML_PATH = Path(f"yolov8{args.modelsz}")
 DATA_YAML_PATH = Path(
-    "/home/frencis/D1/datasets/niicu/data_rgb.yaml",
+    "/home/frencis/D1/datasets/niicu_rgb/data.yaml",
     # "/home/frencis/D1/datasets/llvip_niicu_rgb/data.yaml",
 )
 EXP_NAME = f"yolov8{args.modelsz}-coco-niicu-{args.imgsz}"
