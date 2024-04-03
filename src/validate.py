@@ -3,7 +3,8 @@ from pathlib import Path
 
 
 # Config
-MODEL_YAML_PATH = Path("/home/frencis/D1/sbatch/runs/detect/base-niicu-tl-4ch-640/weights/best.pt")
+MODEL_YAML_PATH = Path("/home/frencis/D1/sbatch/runs/detect/4ch-yolov8x-coco-llvip_niicu-640/weights/best.pt")
+# DATA_YAML_PATH = Path("/home/frencis/D1/datasets/llvip/data.yaml")
 
 
 # Load a model
@@ -12,4 +13,6 @@ model = YOLO(
     verbose=True,
 )
 
-results = model.val()
+results = model.val(
+    # data=DATA_YAML_PATH,
+)
