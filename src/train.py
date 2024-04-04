@@ -19,7 +19,7 @@ DATA_YAML_PATH = Path(
     # "/home/frencis/D1/datasets/llvip_niicu/data.yaml",
     # "/home/frencis/D1/datasets/m3fd/data.yaml",
 )
-EXP_NAME = f"4ch-yolov8{args.modelsz}-niicu-{args.imgsz} (bilinear)"
+EXP_NAME = f"4ch-yolov8{args.modelsz}-niicu-{args.imgsz} (bicubic)"
 
 
 # Load a model
