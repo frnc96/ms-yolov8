@@ -740,8 +740,8 @@ def plot_images(
     mosaic = np.full((int(ns * h), int(ns * w), 3), 255, dtype=np.uint8)  # init
     for i in range(bs):
         x, y = int(w * (i // ns)), int(h * (i % ns))  # block origin
-        (T, R, G, B) = cv2.split(images[i].transpose(1, 2, 0))
-        mosaic[y : y + h, x : x + w, :] = cv2.merge([R, G, B])
+        (T, B, G, R) = cv2.split(images[i].transpose(1, 2, 0))
+        mosaic[y : y + h, x : x + w, :] = cv2.merge([B, G, R])
 
 
     # Resize (optional)

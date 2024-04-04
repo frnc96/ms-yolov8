@@ -54,7 +54,7 @@ class BaseDataset(Dataset):
         img_path,
         imgsz=640,
         cache=False,
-        augment=True,  # TODO: Disabled augmentations
+        augment=True,
         hyp=DEFAULT_CFG,
         prefix="",
         rect=False,
