@@ -15,20 +15,22 @@ args = parser.parse_args()
 # Config
 MODEL_YAML_PATH = Path(f"/home/frencis/D1/ms-yolov8/ultralytics/cfg/models/v8/ms-yolov8{args.modelsz}.yaml")
 DATA_YAML_PATH = Path(
-    "/home/frencis/D1/datasets/niicu/data.yaml",
     # "/home/frencis/D1/datasets/llvip_niicu/data.yaml",
+    # "/home/frencis/D1/datasets/llvip/data.yaml",
+    "/home/frencis/D1/datasets/niicu/data.yaml",
     # "/home/frencis/D1/datasets/m3fd/data.yaml",
 )
-EXP_NAME = f"4ch-yolov8{args.modelsz}-niicu-{args.imgsz} (bicubic)"
+EXP_NAME = f"4ch_bc-yolov8{args.modelsz}-niicu-{args.imgsz}"
 
 
 # Load a model
 model = YOLO(
     model=MODEL_YAML_PATH,
+    # model="/home/frencis/D1/sbatch/runs/detect/4ch-yolov8x-niicu-640 (bicubic)/weights/last.pt",
     verbose=True,
 )#.load(
-#     # f'yolov8{args.modelsz}.pt',
-#     '/home/frencis/D1/sbatch/runs/detect/4ch-yolov8x-llvip_niicu-640/weights/best.pt',
+#     f'yolov8{args.modelsz}.pt',
+#     '/home/frencis/D1/sbatch/runs/detect/4ch_bc-yolov8x-llvip_niicu-640/weights/best.pt',
 # )
 
 
@@ -39,4 +41,5 @@ results = model.train(
     epochs=args.epochs,
     imgsz=args.imgsz,
     name=EXP_NAME,
+    # resume=True,
 )
